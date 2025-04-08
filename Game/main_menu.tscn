@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://bylwawrnbiuwm"]
+
+[ext_resource type="Script" uid="uid://d2lqv8ar1eeiv" path="res://Game/main_menu.gd" id="1_yltbk"]
+[ext_resource type="Texture2D" uid="uid://cnpxhasl65g7y" path="res://Game/screenshot_20250401_192529_pcodigo.jpeg" id="2_gl5pw"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_gl5pw"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_nu65f"]
+events = [SubResource("InputEventKey_gl5pw")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gl5pw"]
+font_size = 64
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yltbk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gl5pw")
+
+[node name="PlayButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -15.5
+offset_right = 23.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+shortcut = SubResource("Shortcut_nu65f")
+text = "Press enter"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -319.0
+offset_top = 50.0
+offset_right = 319.0
+offset_bottom = 229.0
+grow_horizontal = 2
+text = "Backrooms
+With 22 lines of code"
+label_settings = SubResource("LabelSettings_gl5pw")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PlayButton" to="." method="go_to_game"]

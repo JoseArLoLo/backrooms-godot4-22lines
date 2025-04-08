@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://n17umjlonvmi"]
+
+[ext_resource type="Script" uid="uid://gk8gf0525vtd" path="res://Game/entity.gd" id="1_vhlik"]
+[ext_resource type="PackedScene" uid="uid://cx2tasa5iyyg0" path="res://Game/backrooms_monster.glb" id="2_qmbry"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhlik"]
+radius = 0.4
+
+[node name="Entity" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_vhlik")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_qmbry")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_vhlik")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
